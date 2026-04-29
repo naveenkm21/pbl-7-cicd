@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pbl7-app
+  labels:
+    app: pbl7-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pbl7-app
+  template:
+    metadata:
+      labels:
+        app: pbl7-app
+    spec:
+      containers:
+        - name: pbl7-app
+          image: REPLACE_ME_IMAGE:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: APP_VERSION
+              value: "1.0.0"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
