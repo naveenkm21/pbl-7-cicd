@@ -1,29 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="hero text-center text-white p-5 rounded-4 shadow-lg mb-5">
-    <h1 class="display-3 fw-bold">Welcome to FlaskOps</h1>
-    <p class="lead">A modern multi-page Flask app &mdash; containerized with Docker, orchestrated by Kubernetes, delivered by Jenkins.</p>
-    <a href="/about" class="btn btn-light btn-lg rounded-pill px-4 mt-3">Learn More &rarr;</a>
+    <h1 class="display-3 fw-bold">DevOps Toolkit</h1>
+    <p class="lead mb-1">Practical, no-install web utilities for engineers.</p>
+    <p class="small opacity-75">Stateless &middot; Containerized &middot; Self-hosted on your cluster</p>
 </div>
 
 <div class="row g-4">
-    <div class="col-md-4">
-        <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
-            <h3>Dockerized</h3>
-            <p>Packaged into a lean Python 3.9 container ready to run anywhere.</p>
-        </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="/json" class="text-decoration-none text-reset">
+            <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+                <h4>{ } JSON Formatter</h4>
+                <p class="mb-0 text-muted">Validate and pretty-print JSON payloads with sorted keys.</p>
+            </div>
+        </a>
     </div>
-    <div class="col-md-4">
-        <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
-            <h3>Kubernetes</h3>
-            <p>Deployed with 2 replicas behind a NodePort service for high availability.</p>
-        </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="/base64" class="text-decoration-none text-reset">
+            <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+                <h4>&lt;/&gt; Base64</h4>
+                <p class="mb-0 text-muted">Encode or decode text for tokens, configs, and secrets.</p>
+            </div>
+        </a>
     </div>
-    <div class="col-md-4">
-        <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
-            <h3>Jenkins CI/CD</h3>
-            <p>Push to GitHub, build, push to Docker Hub, auto-deploy to K8s.</p>
-        </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="/hash" class="text-decoration-none text-reset">
+            <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+                <h4>#&nbsp;Hash Generator</h4>
+                <p class="mb-0 text-muted">MD5, SHA-1, SHA-256, SHA-512 checksums in one shot.</p>
+            </div>
+        </a>
     </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="/generators" class="text-decoration-none text-reset">
+            <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+                <h4>&#9889; Generators</h4>
+                <p class="mb-0 text-muted">UUIDs and cryptographically strong passwords.</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="alert alert-light glass-card mt-5 rounded-4 border-0">
+    <strong>You are talking to pod <code>{{ pod_name }}</code>.</strong>
+    Refresh the page &mdash; Kubernetes load-balances across replicas, so the pod name will change.
 </div>
 {% endblock %}

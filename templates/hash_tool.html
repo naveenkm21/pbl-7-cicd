@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card glass-card p-4 p-md-5 rounded-4 shadow">
+    <h1 class="mb-1">Hash Generator</h1>
+    <p class="text-muted">Compute MD5, SHA-1, SHA-256, and SHA-512 of any text.</p>
+    <form method="POST">
+        <textarea name="payload" rows="5" class="form-control mono mb-3"
+                  placeholder="Enter text to hash..." required>{{ raw }}</textarea>
+        <button class="btn btn-primary rounded-pill px-4" type="submit">Compute Hashes</button>
+    </form>
+    {% if results %}
+        <h5 class="mt-4">Results</h5>
+        <table class="table table-borderless align-middle output-box mono">
+            <tbody>
+            {% for algo, digest in results.items() %}
+                <tr>
+                    <td class="fw-bold" style="width: 110px;">{{ algo }}</td>
+                    <td class="text-break">{{ digest }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

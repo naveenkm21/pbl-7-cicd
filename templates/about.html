@@ -1,24 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card glass-card p-5 rounded-4 shadow">
-    <h1 class="mb-4">About This Project</h1>
-    <p class="lead">This is <strong>Lab 7</strong> &mdash; a complete CI/CD pipeline demonstration.</p>
+<div class="card glass-card p-4 p-md-5 rounded-4 shadow">
+    <h1 class="mb-3">About DevOps Toolkit</h1>
+    <p class="lead">A small but real-world utility site engineers actually reach for &mdash; deployed end-to-end with a CI/CD pipeline.</p>
     <hr>
-    <h4>The Stack</h4>
+    <h4>Tools included</h4>
     <ul>
-        <li><strong>Flask</strong> &mdash; lightweight Python web framework</li>
-        <li><strong>Bootstrap 5</strong> &mdash; responsive modern UI</li>
-        <li><strong>Docker</strong> &mdash; containerization</li>
-        <li><strong>Kubernetes</strong> &mdash; orchestration (Docker Desktop)</li>
-        <li><strong>Jenkins</strong> &mdash; automated build &amp; deploy</li>
-        <li><strong>GitHub</strong> &mdash; source of truth</li>
+        <li><strong>JSON Formatter</strong> &mdash; validate config files, API responses, log lines.</li>
+        <li><strong>Base64</strong> &mdash; encode/decode Kubernetes secrets, JWT segments, basic-auth headers.</li>
+        <li><strong>Hash Generator</strong> &mdash; quickly compute file/text checksums.</li>
+        <li><strong>UUID &amp; Password Generators</strong> &mdash; safe random IDs and credentials.</li>
     </ul>
-    <h4 class="mt-4">The Flow</h4>
+
+    <h4 class="mt-4">CI/CD architecture</h4>
     <ol>
-        <li>Developer pushes code to GitHub.</li>
-        <li>Jenkins detects the change and starts the pipeline.</li>
-        <li>Docker image is built and pushed to Docker Hub.</li>
-        <li>Kubernetes pulls the new image and rolls out the update with zero downtime.</li>
+        <li><strong>GitHub</strong> &mdash; source of truth.</li>
+        <li><strong>Jenkins</strong> polls SCM, builds the Docker image tagged with the build number.</li>
+        <li>Image is pushed to <strong>Docker Hub</strong>.</li>
+        <li><code>kubectl apply</code> rolls out the new image across <strong>2 replicas</strong> &mdash; zero downtime.</li>
+        <li>Traffic is load-balanced via a <code>NodePort</code> Service.</li>
     </ol>
+
+    <h4 class="mt-4">Why this app fits Kubernetes</h4>
+    <p>Every endpoint is <strong>stateless</strong> &mdash; no database, no session affinity required.
+       Each request is independently handled by whichever pod the Service routes it to.
+       That's why the footer can show different pod names on different requests.</p>
 </div>
 {% endblock %}

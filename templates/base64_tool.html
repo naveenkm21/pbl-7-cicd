@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card glass-card p-4 p-md-5 rounded-4 shadow">
+    <h1 class="mb-1">Base64 Encoder / Decoder</h1>
+    <p class="text-muted">Convert text to Base64 (e.g. for K8s secrets) or decode it back.</p>
+    {% if error %}<div class="alert alert-danger rounded-3">{{ error }}</div>{% endif %}
+    <form method="POST">
+        <div class="btn-group mb-3" role="group">
+            <input type="radio" class="btn-check" name="mode" id="enc" value="encode" {% if mode == 'encode' %}checked{% endif %}>
+            <label class="btn btn-outline-primary" for="enc">Encode</label>
+            <input type="radio" class="btn-check" name="mode" id="dec" value="decode" {% if mode == 'decode' %}checked{% endif %}>
+            <label class="btn btn-outline-primary" for="dec">Decode</label>
+        </div>
+        <textarea name="payload" rows="6" class="form-control mono mb-3"
+                  placeholder="Enter text..." required>{{ raw }}</textarea>
+        <button class="btn btn-primary rounded-pill px-4" type="submit">Convert</button>
+    </form>
+    {% if output %}
+        <h5 class="mt-4">Output</h5>
+        <pre class="output-box mono">{{ output }}</pre>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card glass-card p-4 rounded-4 shadow h-100">
+            <h3>UUID Generator</h3>
+            <p class="text-muted">Cryptographically random version-4 UUIDs.</p>
+            <form method="POST" class="row g-2 align-items-end">
+                <input type="hidden" name="action" value="uuid">
+                <div class="col-auto">
+                    <label class="form-label">Count</label>
+                    <input type="number" name="count" min="1" max="50" value="5" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary rounded-pill px-4" type="submit">Generate</button>
+                </div>
+            </form>
+            {% if uuids %}
+                <pre class="output-box mono mt-3">{% for u in uuids %}{{ u }}
+{% endfor %}</pre>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card glass-card p-4 rounded-4 shadow h-100">
+            <h3>Password Generator</h3>
+            <p class="text-muted">Strong passwords using <code>secrets</code> (suitable for production use).</p>
+            <form method="POST" class="row g-2 align-items-end">
+                <input type="hidden" name="action" value="password">
+                <div class="col-auto">
+                    <label class="form-label">Length</label>
+                    <input type="number" name="length" min="8" max="64" value="{{ length }}" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary rounded-pill px-4" type="submit">Generate</button>
+                </div>
+            </form>
+            {% if password %}
+                <pre class="output-box mono mt-3">{{ password }}</pre>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
