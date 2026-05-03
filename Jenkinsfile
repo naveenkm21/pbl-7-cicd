@@ -14,15 +14,9 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t %FULL_IMAGE% -t %IMAGE_NAME%:latest ."
+                sh 'docker build -t $FULL_IMAGE -t $IMAGE_NAME:latest .'
             }
         }
 
@@ -33,28 +27,30 @@ pipeline {
                     usernameVariable: 'DH_USER',
                     passwordVariable: 'DH_PASS'
                 )]) {
-                    bat 'echo %DH_PASS% | docker login -u %DH_USER% --password-stdin'
-                    bat "docker push %FULL_IMAGE%"
-                    bat "docker push %IMAGE_NAME%:latest"
+                    sh '''
+                        echo "$DH_PASS" | docker login -u "$DH_USER" --password-stdin
+                        docker push $FULL_IMAGE
+                        docker push $IMAGE_NAME:latest
+                    '''
                 }
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat """
-                    powershell -Command "(Get-Content deployment.yaml) -replace 'IMAGE_PLACEHOLDER', '%FULL_IMAGE%' | Set-Content deployment-out.yaml"
-                """
-                bat "kubectl apply -f deployment-out.yaml"
-                bat "kubectl rollout status deployment/flask-web-deployment --timeout=120s"
-                bat "kubectl get svc flask-web-service"
+                sh '''
+                    sed "s|IMAGE_PLACEHOLDER|$FULL_IMAGE|g" deployment.yaml > deployment-out.yaml
+                    kubectl apply -f deployment-out.yaml
+                    kubectl rollout status deployment/flask-web-deployment --timeout=120s
+                    kubectl get svc flask-web-service
+                '''
             }
         }
     }
 
     post {
         always {
-            bat 'docker logout || exit 0'
+            sh 'docker logout || true'
             cleanWs()
         }
         success {
