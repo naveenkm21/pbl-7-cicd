@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="'Segoe UI', Inter, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafbff"/>
+      <stop offset="100%" stop-color="#eef1fb"/>
+    </linearGradient>
+    <linearGradient id="dev" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="git" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="jen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d33833"/>
+      <stop offset="100%" stop-color="#a02c28"/>
+    </linearGradient>
+    <linearGradient id="dh" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2496ed"/>
+      <stop offset="100%" stop-color="#0b6bc1"/>
+    </linearGradient>
+    <linearGradient id="k8s" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#326ce5"/>
+      <stop offset="100%" stop-color="#1d4eb8"/>
+    </linearGradient>
+    <linearGradient id="pod" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="user" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0b1133" flood-opacity="0.18"/>
+    </filter>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#059669"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg)"/>
+
+  <text x="600" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#1f2937">
+    PBL-7 — CI/CD Pipeline Architecture
+  </text>
+  <text x="600" y="74" text-anchor="middle" font-size="14" fill="#6b7280">
+    Flask app · Docker · Jenkins · Kubernetes (kind) on Windows 11
+  </text>
+
+  <!-- Developer -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="120" width="180" height="100" rx="14" fill="url(#dev)"/>
+    <text x="130" y="160" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Developer</text>
+    <text x="130" y="185" text-anchor="middle" fill="#e0e7ff" font-size="13">Windows 11 · VS Code</text>
+    <text x="130" y="203" text-anchor="middle" fill="#e0e7ff" font-size="13">Git for Windows</text>
+  </g>
+
+  <!-- GitHub -->
+  <g filter="url(#shadow)">
+    <rect x="290" y="120" width="180" height="100" rx="14" fill="url(#git)"/>
+    <text x="380" y="160" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">GitHub</text>
+    <text x="380" y="185" text-anchor="middle" fill="#d1d5db" font-size="13">naveenkm21/pbl-7-cicd</text>
+    <text x="380" y="203" text-anchor="middle" fill="#d1d5db" font-size="13">branch: main</text>
+  </g>
+
+  <!-- Jenkins -->
+  <g filter="url(#shadow)">
+    <rect x="540" y="120" width="180" height="100" rx="14" fill="url(#jen)"/>
+    <text x="630" y="160" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Jenkins LTS</text>
+    <text x="630" y="185" text-anchor="middle" fill="#fee2e2" font-size="13">Pipeline (Declarative)</text>
+    <text x="630" y="203" text-anchor="middle" fill="#fee2e2" font-size="13">Poll SCM · 2 min</text>
+  </g>
+
+  <!-- Docker Hub -->
+  <g filter="url(#shadow)">
+    <rect x="790" y="120" width="180" height="100" rx="14" fill="url(#dh)"/>
+    <text x="880" y="160" text-anchor="middle" fill="#fff" font-size="18" font-weight="600">Docker Hub</text>
+    <text x="880" y="185" text-anchor="middle" fill="#dbeafe" font-size="13">naveenkm21/flask-web</text>
+    <text x="880" y="203" text-anchor="middle" fill="#dbeafe" font-size="13">tags: BUILD_NUMBER, latest</text>
+  </g>
+
+  <!-- Pipeline stages strip -->
+  <g>
+    <rect x="540" y="260" width="180" height="200" rx="14" fill="#fff" stroke="#e5e7eb" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="630" y="285" text-anchor="middle" fill="#7f1d1d" font-size="13" font-weight="700" letter-spacing="1">PIPELINE STAGES</text>
+
+    <rect x="555" y="300" width="150" height="28" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="630" y="319" text-anchor="middle" fill="#4338ca" font-size="12" font-weight="600">1. Checkout SCM</text>
+
+    <rect x="555" y="334" width="150" height="28" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="630" y="353" text-anchor="middle" fill="#4338ca" font-size="12" font-weight="600">2. Build Image</text>
+
+    <rect x="555" y="368" width="150" height="28" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="630" y="387" text-anchor="middle" fill="#4338ca" font-size="12" font-weight="600">3. Push to Hub</text>
+
+    <rect x="555" y="402" width="150" height="28" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="630" y="421" text-anchor="middle" fill="#4338ca" font-size="12" font-weight="600">4. kubectl apply</text>
+
+    <rect x="555" y="436" width="150" height="20" rx="6" fill="#dcfce7" stroke="#86efac"/>
+    <text x="630" y="450" text-anchor="middle" fill="#166534" font-size="11" font-weight="600">post: cleanWs</text>
+  </g>
+
+  <!-- Kubernetes cluster -->
+  <g filter="url(#shadow)">
+    <rect x="240" y="500" width="720" height="180" rx="16" fill="#fff" stroke="#326ce5" stroke-width="2"/>
+    <rect x="240" y="500" width="720" height="36" rx="16" fill="url(#k8s)"/>
+    <text x="600" y="524" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Kubernetes Cluster (kind · pbl3-control-plane)</text>
+
+    <!-- Deployment -->
+    <rect x="270" y="556" width="360" height="105" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="450" y="578" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">Deployment: flask-web-deployment (replicas: 2)</text>
+
+    <g>
+      <rect x="290" y="592" width="150" height="58" rx="8" fill="url(#pod)"/>
+      <text x="365" y="615" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Pod A</text>
+      <text x="365" y="633" text-anchor="middle" fill="#d1fae5" font-size="11">flask-web :5000</text>
+    </g>
+    <g>
+      <rect x="460" y="592" width="150" height="58" rx="8" fill="url(#pod)"/>
+      <text x="535" y="615" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Pod B</text>
+      <text x="535" y="633" text-anchor="middle" fill="#d1fae5" font-size="11">flask-web :5000</text>
+    </g>
+
+    <!-- Service -->
+    <rect x="660" y="556" width="280" height="105" rx="10" fill="#fef3c7" stroke="#fbbf24"/>
+    <text x="800" y="578" text-anchor="middle" fill="#78350f" font-size="13" font-weight="700">Service · NodePort 30007</text>
+    <text x="800" y="600" text-anchor="middle" fill="#78350f" font-size="12">selector: app=flask-web</text>
+    <text x="800" y="620" text-anchor="middle" fill="#78350f" font-size="12">80 → 5000  (round-robin)</text>
+    <text x="800" y="645" text-anchor="middle" fill="#78350f" font-size="11" font-style="italic">readiness/liveness: /health</text>
+  </g>
+
+  <!-- User / browser -->
+  <g filter="url(#shadow)">
+    <rect x="990" y="540" width="180" height="100" rx="14" fill="url(#user)"/>
+    <text x="1080" y="578" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Browser</text>
+    <text x="1080" y="600" text-anchor="middle" fill="#fef3c7" font-size="12">localhost:30007</text>
+    <text x="1080" y="618" text-anchor="middle" fill="#fef3c7" font-size="11">via kubectl port-forward</text>
+  </g>
+
+  <!-- Top-row arrows -->
+  <line x1="220" y1="170" x2="290" y2="170" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="255" y="160" text-anchor="middle" fill="#374151" font-size="11" font-weight="600">git push</text>
+
+  <line x1="470" y1="170" x2="540" y2="170" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="505" y="160" text-anchor="middle" fill="#374151" font-size="11" font-weight="600">poll SCM</text>
+
+  <line x1="720" y1="170" x2="790" y2="170" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="755" y="160" text-anchor="middle" fill="#374151" font-size="11" font-weight="600">push image</text>
+
+  <!-- Jenkins → stages -->
+  <line x1="630" y1="220" x2="630" y2="260" stroke="#475569" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Stages → kubectl apply → cluster -->
+  <path d="M 555 416 C 460 416, 410 470, 410 500" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="380" y="475" text-anchor="middle" fill="#065f46" font-size="11" font-weight="600">kubectl apply</text>
+
+  <!-- Docker Hub → cluster (image pull) -->
+  <path d="M 880 220 C 880 360, 800 470, 700 500" fill="none" stroke="#0b6bc1" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="900" y="370" text-anchor="middle" fill="#0b6bc1" font-size="11" font-weight="600">image pull</text>
+
+  <!-- User → Service -->
+  <line x1="990" y1="590" x2="940" y2="590" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <g transform="translate(40, 660)">
+    <rect width="14" height="14" fill="#059669" rx="2"/>
+    <text x="22" y="12" font-size="11" fill="#374151">deploy flow</text>
+
+    <rect x="110" width="14" height="14" fill="#0b6bc1" rx="2"/>
+    <text x="132" y="12" font-size="11" fill="#374151">image pull</text>
+
+    <rect x="220" width="14" height="14" fill="#475569" rx="2"/>
+    <text x="242" y="12" font-size="11" fill="#374151">user / control flow</text>
+  </g>
+
+  <text x="1160" y="710" text-anchor="end" font-size="10" fill="#9ca3af">naveenkm21/pbl-7-cicd</text>
+</svg>
