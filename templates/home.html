@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero text-center text-white p-5 rounded-4 shadow-lg mb-5">
+    <h1 class="display-3 fw-bold">Welcome to FlaskOps</h1>
+    <p class="lead">A modern multi-page Flask app &mdash; containerized with Docker, orchestrated by Kubernetes, delivered by Jenkins.</p>
+    <a href="/about" class="btn btn-light btn-lg rounded-pill px-4 mt-3">Learn More &rarr;</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+            <h3>Dockerized</h3>
+            <p>Packaged into a lean Python 3.9 container ready to run anywhere.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+            <h3>Kubernetes</h3>
+            <p>Deployed with 2 replicas behind a NodePort service for high availability.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card feature-card h-100 p-4 rounded-4 shadow-sm">
+            <h3>Jenkins CI/CD</h3>
+            <p>Push to GitHub, build, push to Docker Hub, auto-deploy to K8s.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card glass-card p-5 rounded-4 shadow">
+    <h1 class="mb-4">About This Project</h1>
+    <p class="lead">This is <strong>Lab 7</strong> &mdash; a complete CI/CD pipeline demonstration.</p>
+    <hr>
+    <h4>The Stack</h4>
+    <ul>
+        <li><strong>Flask</strong> &mdash; lightweight Python web framework</li>
+        <li><strong>Bootstrap 5</strong> &mdash; responsive modern UI</li>
+        <li><strong>Docker</strong> &mdash; containerization</li>
+        <li><strong>Kubernetes</strong> &mdash; orchestration (Docker Desktop)</li>
+        <li><strong>Jenkins</strong> &mdash; automated build &amp; deploy</li>
+        <li><strong>GitHub</strong> &mdash; source of truth</li>
+    </ul>
+    <h4 class="mt-4">The Flow</h4>
+    <ol>
+        <li>Developer pushes code to GitHub.</li>
+        <li>Jenkins detects the change and starts the pipeline.</li>
+        <li>Docker image is built and pushed to Docker Hub.</li>
+        <li>Kubernetes pulls the new image and rolls out the update with zero downtime.</li>
+    </ol>
+</div>
+{% endblock %}

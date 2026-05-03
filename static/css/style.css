@@ -1,0 +1,53 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #2c2c54;
+}
+
+.glass-nav {
+    background: rgba(20, 20, 40, 0.55) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-nav .nav-link {
+    color: #fff !important;
+    transition: 0.2s;
+}
+.glass-nav .nav-link:hover {
+    color: #ffd700 !important;
+    transform: translateY(-2px);
+}
+
+.hero {
+    background: linear-gradient(120deg, rgba(0,0,0,0.4), rgba(118,75,162,0.6));
+    backdrop-filter: blur(6px);
+}
+
+.feature-card,
+.glass-card {
+    background: rgba(255,255,255,0.92);
+    border: none;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.footer-glass {
+    background: rgba(20, 20, 40, 0.65);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    margin-top: 4rem;
+}
